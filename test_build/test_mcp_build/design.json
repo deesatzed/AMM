@@ -1,0 +1,32 @@
+{
+  "id": "test_mcp_build",
+  "design_id": "amm_design_1362361a-ed2b-4117-b7f4-b48e842597be",
+  "name": "Test MCP Build",
+  "description": "Test design for MCP server build",
+  "version": "0.1.0",
+  "knowledge_sources": [],
+  "adaptive_memory": {
+    "enabled": true,
+    "db_name_prefix": "test_amm_memory",
+    "retrieval_limit": 10,
+    "retention_policy_days": null
+  },
+  "dynamic_context_functions": [],
+  "gemini_config": {
+    "model_name": "models/gemini-1.5-flash-latest",
+    "embedding_model_name": "models/text-embedding-004",
+    "api_key_env_var": "GEMINI_API_KEY",
+    "temperature": 0.7,
+    "top_p": null,
+    "top_k": null,
+    "max_output_tokens": 2048
+  },
+  "agent_prompts": {
+    "system_instruction": "You are a helpful assistant.",
+    "welcome_message": "Hello, how can I help you?"
+  },
+  "ui_metadata": {},
+  "metadata": {},
+  "created_at": null,
+  "updated_at": null
+}

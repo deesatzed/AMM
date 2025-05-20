@@ -1,0 +1,81 @@
+name: amm-env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  # Core Python
+  - python=3.12
+  - pip
+  
+  # Core dependencies
+  - numpy>=2.2.3
+  - pandas>=2.2.3
+  - pyarrow>=19.0.1
+  - sqlalchemy>=2.0.40
+  - pydantic>=2.11.3
+  - pydantic-settings>=2.8.1
+  - python-dotenv>=1.1.0
+  
+  # Web and API
+  - fastapi>=0.115.12
+  - uvicorn>=0.34.2
+  - httpx>=0.28.1
+  - requests>=2.32.3
+  - aiohttp>=3.11.16
+  - starlette>=0.46.1
+  
+  # Database and Vector Store
+  - asyncpg>=0.30.0
+  - redis>=5.0.0
+  
+  # Machine Learning
+  - pytorch>=2.6.0
+  - torchvision
+  - torchaudio
+  - transformers>=4.49.0
+  - sentence-transformers>=3.4.1
+  - scikit-learn>=1.6.1
+  - scipy>=1.15.2
+ 
+
+  # Development tools
+  - pytest>=8.3.5
+  - pytest-cov
+  - pytest-asyncio>=0.26.0
+  - pytest-mock>=3.0.0
+  - black
+  - isort
+  - mypy
+  - flake8
+  
+  # Additional utilities
+  - tqdm>=4.67.1
+  - rich>=13.9.4
+  - pyyaml>=6.0.2
+  - orjson>=3.10.16
+  - tenacity>=8.5.0
+  
+  # CLI tools
+  - typer>=0.15.2
+  - click>=8.1.8
+  
+  # Required for some dependencies
+  - cuda-version=12.1 
+  - cudnn=8.9
+  
+  # Install remaining packages via pip
+  - pip:
+    - streamlit==1.45.1
+    - langchain-core==0.3.52
+    - langchain-text-splitters==0.3.8
+    - fastapi-mcp==0.2.0
+    - mcp==1.6.0
+    - mcp-use==1.2.5
+    - lancedb>=0.22.0
+    - cudatoolkit=12.1
+    - google-generativeai
+    - google-api-core 
+    - google-auth
+    

@@ -1,0 +1,16 @@
+# Today's Top 3 Tech Headlines - May 11, 2025
+
+1. **Breakthrough in Quantum Machine Learning Promises Medical Diagnostic Revolution**
+   - Researchers at MIT and Stanford have developed a new quantum algorithm that dramatically improves AI diagnostic capabilities
+   - Early tests show 98% accuracy in detecting early-stage cancers from standard blood tests
+   - The system requires significantly less training data than conventional machine learning approaches
+
+2. **Solar Panel Efficiency Shatters Records with New Perovskite-Silicon Hybrid**
+   - A team from the National Renewable Energy Laboratory has created solar panels with 39.2% efficiency
+   - The breakthrough combines perovskite and silicon in a tandem cell configuration
+   - Commercial production expected to begin within 18 months, potentially reducing solar energy costs by 40%
+
+3. **Global Tech Leaders Announce Unified AI Safety Standards Framework**
+   - Major technology companies including Google, Microsoft, OpenAI, and Anthropic have agreed on common safety standards
+   - The framework includes mandatory red-teaming, bias testing, and transparency requirements
+   - Regulatory bodies from the US, EU, UK, and China have endorsed the standards as a foundation for upcoming legislation

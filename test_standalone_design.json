@@ -1,0 +1,15 @@
+{
+  "id": "test_standalone_mcp",
+  "name": "Test Standalone MCP Build",
+  "description": "Test design for standalone MCP server build",
+  "knowledge_sources": [],
+  "agent_prompts": {
+    "system_instruction": "You are a helpful assistant.",
+    "welcome_message": "Hello, how can I help you?"
+  },
+  "adaptive_memory": {
+    "enabled": true,
+    "retrieval_limit": 10
+  },
+  "metadata": {}
+}

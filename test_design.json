@@ -1,0 +1,16 @@
+{
+  "id": "test_mcp_build",
+  "name": "Test MCP Build",
+  "description": "Test design for MCP server build",
+  "knowledge_sources": [],
+  "adaptive_memory": {
+    "enabled": true,
+    "db_name_prefix": "test_amm_memory",
+    "retrieval_limit": 10
+  },
+  "agent_prompts": {
+    "system_instruction": "You are a helpful assistant.",
+    "welcome_message": "Hello, how can I help you?"
+  },
+  "metadata": {}
+}

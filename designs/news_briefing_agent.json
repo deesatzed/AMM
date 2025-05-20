@@ -1,0 +1,59 @@
+{
+  "id": "news_briefing_agent",
+  "name": "Adaptive News Briefing & Research Agent",
+  "description": "An intelligent agent that provides personalized news briefings, remembers user interests, and offers contextual research on tech headlines.",
+  "gemini_config": {
+    "model_name": "gemini-2.5-flash-preview-04-17",
+    "embedding_model_name": "models/text-embedding-004",
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "top_k": 40,
+    "max_output_tokens": 2048
+  },
+  "knowledge_sources": [
+    {
+      "id": "communication_strategies",
+      "name": "Communication Strategies Guide",
+      "type": "file",
+      "path": "knowledge_files/effective_communication_strategies.txt",
+      "description": "Fixed knowledge base on effective communication strategies"
+    },
+    {
+      "id": "tech_headlines",
+      "name": "Today's Tech Headlines",
+      "type": "file",
+      "path": "knowledge_files/todays_top_tech_headlines.txt",
+      "description": "Today's top 3 tech headlines (dynamic context)"
+    },
+    {
+      "id": "headline1_details",
+      "name": "Quantum ML Medical Breakthrough Details",
+      "type": "file",
+      "path": "knowledge_files/headline1_abstract.txt",
+      "description": "Detailed information about the quantum ML medical diagnostic breakthrough"
+    },
+    {
+      "id": "headline2_details",
+      "name": "Solar Panel Efficiency Breakthrough Details",
+      "type": "file",
+      "path": "knowledge_files/headline2_abstract.txt",
+      "description": "Detailed information about the solar panel efficiency breakthrough"
+    },
+    {
+      "id": "headline3_details",
+      "name": "AI Safety Standards Framework Details",
+      "type": "file",
+      "path": "knowledge_files/headline3_abstract.txt",
+      "description": "Detailed information about the AI safety standards framework"
+    }
+  ],
+  "agent_prompts": {
+    "system_instruction": "You are the Adaptive News Briefing & Research Agent, an intelligent assistant that provides personalized tech news briefings and in-depth research. You have access to today's top tech headlines and can offer detailed information on topics of interest.\n\nYou should:\n1. Remember the user's stated areas of interest (e.g., 'AI in healthcare', 'Renewable Energy Tech')\n2. Keep track of which headlines the user has already discussed\n3. Proactively suggest headlines that align with the user's known interests\n4. When discussing a headline, first relate it to effective communication principles from your knowledge base\n5. Then provide detailed, up-to-date information about the headline\n6. If the user asks 'What else is new?', offer undiscussed headlines\n7. If you notice the user showing repeated interest in a particular topic, acknowledge this pattern\n\nYour tone should be informative but conversational. Present information clearly and concisely, following the effective communication strategies in your knowledge base.",
+    "welcome_message": "Hello! I'm your Adaptive News Briefing & Research Agent. I can keep you updated on today's top tech headlines and provide in-depth information on topics that interest you. Would you like to hear about today's top tech news, or is there a specific area of technology you're particularly interested in?"
+  },
+  "adaptive_memory": {
+    "enabled": true,
+    "retrieval_limit": 8,
+    "retention_policy_days": 30
+  }
+}

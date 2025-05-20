@@ -1,0 +1,1019 @@
+Activating mcp-env conda environment...
+Running tests...
+============================= test session starts ==============================
+platform linux -- Python 3.12.9, pytest-8.3.5, pluggy-1.6.0 -- /home/o2satz/anaconda3/envs/mcp-env/bin/python
+cachedir: .pytest_cache
+rootdir: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM
+configfile: pytest.ini
+plugins: asyncio-0.26.0, langsmith-0.3.31, mock-3.14.0, anyio-4.8.0
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 47 items
+
+tests/unit/test_amm_engine.py::test_amm_engine_initialization_minimal PASSED [  2%]
+tests/unit/test_amm_engine.py::test_amm_engine_initialization_no_api_key FAILED [  4%]
+tests/unit/test_amm_engine.py::test_amm_engine_initialization_custom_base_path PASSED [  6%]
+tests/unit/test_amm_engine.py::test_amm_engine_initialize_paths_adaptive_memory_disabled PASSED [  8%]
+tests/unit/test_amm_engine.py::test_amm_engine_get_welcome_message PASSED [ 10%]
+tests/unit/test_amm_engine.py::test_amm_engine_get_system_instruction PASSED [ 12%]
+tests/unit/test_amm_engine.py::test_amm_engine_process_query_placeholder FAILED [ 14%]
+tests/unit/test_amm_engine.py::test_amm_engine_process_query_no_client PASSED [ 17%]
+tests/unit/test_amm_engine.py::test_initialize_gemini_client_success PASSED [ 19%]
+tests/unit/test_amm_engine.py::test_initialize_gemini_client_no_api_key FAILED [ 21%]
+tests/unit/test_amm_engine.py::test_initialize_gemini_client_with_all_gen_params PASSED [ 23%]
+tests/unit/test_amm_engine.py::test_initialize_knowledge_sources_no_sources PASSED [ 25%]
+tests/unit/test_amm_engine.py::test_initialize_knowledge_sources_file_success PASSED [ 27%]
+tests/unit/test_amm_engine.py::test_initialize_knowledge_sources_file_custom_encoding PASSED [ 29%]
+tests/unit/test_amm_engine.py::test_initialize_knowledge_sources_file_not_found PASSED [ 31%]
+tests/unit/test_amm_engine.py::test_initialize_knowledge_sources_file_read_error PASSED [ 34%]
+tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_no_lancedb_table PASSED [ 36%]
+tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_no_ai_client FAILED [ 38%]
+tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_embedding_failure PASSED [ 40%]
+tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_lancedb_search_error PASSED [ 42%]
+tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_success PASSED [ 44%]
+tests/unit/test_amm_engine.py::test_amm_engine_add_and_get_interaction_records_empty PASSED [ 46%]
+tests/unit/test_amm_engine.py::test_amm_engine_add_and_get_interaction_records PASSED [ 48%]
+tests/unit/test_amm_engine.py::test_process_query_with_fixed_knowledge_integration FAILED [ 51%]
+tests/unit/test_amm_engine.py::test_process_query_no_fixed_knowledge_found_integration FAILED [ 53%]
+tests/unit/test_amm_engine.py::test_amm_engine_add_and_get_interaction_records_with_db PASSED [ 55%]
+tests/unit/test_amm_engine.py::test_fixed_knowledge_retrieval_placeholder PASSED [ 57%]
+tests/unit/test_amm_models.py::test_knowledge_source_config_valid PASSED [ 59%]
+tests/unit/test_amm_models.py::test_knowledge_source_config_missing_required PASSED [ 61%]
+tests/unit/test_amm_models.py::test_adaptive_memory_config_defaults PASSED [ 63%]
+tests/unit/test_amm_models.py::test_adaptive_memory_config_custom PASSED [ 65%]
+tests/unit/test_amm_models.py::test_dynamic_context_function_valid PASSED [ 68%]
+tests/unit/test_amm_models.py::test_dynamic_context_function_missing_name PASSED [ 70%]
+tests/unit/test_amm_models.py::test_gemini_config_defaults FAILED        [ 72%]
+tests/unit/test_amm_models.py::test_gemini_config_invalid_temperature PASSED [ 74%]
+tests/unit/test_amm_models.py::test_gemini_config_custom_model PASSED    [ 76%]
+tests/unit/test_amm_models.py::test_agent_prompts_defaults PASSED        [ 78%]
+tests/unit/test_amm_models.py::test_agent_prompts_custom PASSED          [ 80%]
+tests/unit/test_amm_models.py::test_amm_design_minimal_valid PASSED      [ 82%]
+tests/unit/test_amm_models.py::test_amm_design_missing_name PASSED       [ 85%]
+tests/unit/test_amm_models.py::test_amm_design_with_nested_configs PASSED [ 87%]
+tests/unit/test_mcp_server.py::test_health_endpoint PASSED               [ 89%]
+tests/unit/test_mcp_server.py::test_info_endpoint PASSED                 [ 91%]
+tests/unit/test_mcp_server.py::test_generate_endpoint FAILED             [ 93%]
+tests/unit/test_mcp_server.py::test_generate_endpoint_error_handling PASSED [ 95%]
+tests/unit/test_mcp_server.py::test_api_key_validation FAILED            [ 97%]
+tests/unit/test_mcp_server.py::test_build_amm_with_mcp_server FAILED     [100%]
+
+=================================== FAILURES ===================================
+__________________ test_amm_engine_initialization_no_api_key ___________________
+
+minimal_design = AMMDesign(design_id='amm_design_7bfef706-293d-443d-a34a-654e10966d9e', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_no_api_key = None
+mock_path_mkdir = <MagicMock name='mkdir' id='128926511541392'>
+capsys = <_pytest.capture.CaptureFixture object at 0x75420af40cb0>
+
+    def test_amm_engine_initialization_no_api_key(minimal_design, mock_env_no_api_key, mock_path_mkdir, capsys):
+        """Test initialization when GEMINI_API_KEY is not set."""
+        engine = AMMEngine(design=minimal_design)
+>       assert engine.ai_model_client is None  # Check client is None if key is missing
+E       AssertionError: assert <module 'google.generativeai' from '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/site-packages/google/generativeai/__init__.py'> is None
+E        +  where <module 'google.generativeai' from '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/site-packages/google/generativeai/__init__.py'> = <amm_project.engine.amm_engine.AMMEngine object at 0x75420af40e30>.ai_model_client
+
+tests/unit/test_amm_engine.py:99: AssertionError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: 910d4427): _initialize_paths called.
+DEBUG_PATHS (Engine ID: 910d4427): Determined instance_data_path: amm_instances/amm_design_7bfef706-293d-443d-a34a-654e10966d9e
+DEBUG_PATHS (Engine ID: 910d4427): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_7bfef706-293d-443d-a34a-654e10966d9e
+DEBUG_PATHS (Engine ID: 910d4427): LanceDB path set to: amm_instances/amm_design_7bfef706-293d-443d-a34a-654e10966d9e/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: 910d4427): SQLite path set to: amm_instances/amm_design_7bfef706-293d-443d-a34a-654e10966d9e/adaptive_memory_cache_amm_design_7bfef706-293d-443d-a34a-654e10966d9e.sqlite
+DEBUG_PATHS (Engine ID: 910d4427): _initialize_paths completed.
+DEBUG_GEMINI (Engine ID: 910d4427): _initialize_gemini_client called.
+DEBUG_GEMINI (Engine ID: 910d4427): Using embedding model from design: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_GEMINI (Engine ID: 910d4427): Gemini client initialized successfully.
+DEBUG_GEMINI (Engine ID: 910d4427): _initialize_gemini_client completed. AI Client is None: False, Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_INIT (Engine ID: 910d4427): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: 910d4427): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: 910d4427): No knowledge sources defined. Skipping LanceDB initialization. self.lancedb_table remains None.
+DEBUG_INIT (Engine ID: 910d4427): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: 910d4427): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: 910d4427): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: 910d4427): Error initializing adaptive memory database: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+DEBUG_INIT (Engine ID: 910d4427): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: 910d4427): Final check before __init__ exits try block. AI Client is None: False
+DEBUG_INIT (Engine ID: 910d4427): AMMEngine initialized for design 'TestDesign' (ID: amm_design_7bfef706-293d-443d-a34a-654e10966d9e). __init__ ENDED.
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:22,875 - AMMEngine_910d4427 - DEBUG - AMMEngine __init__ STARTED.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_910d4427:amm_engine.py:44 AMMEngine __init__ STARTED.
+__________________ test_amm_engine_process_query_placeholder ___________________
+
+mock_init_gemini = <MagicMock name='_initialize_gemini_client' id='128926512067840'>
+minimal_design = AMMDesign(design_id='amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_api_key = environ({'SHELL': '/bin/bash', 'SESSION_MANAGER': 'local/o2satz-CF:@/tmp/.ICE-unix/8403,unix/o2satz-CF:/tmp/.ICE-unix/...st_key_123', 'PYTEST_CURRENT_TEST': 'tests/unit/test_amm_engine.py::test_amm_engine_process_query_placeholder (call)'})
+
+    @patch('amm_project.engine.amm_engine.AMMEngine._initialize_gemini_client')
+    def test_amm_engine_process_query_placeholder(mock_init_gemini, minimal_design, mock_env_api_key):
+        # This test used mock_path_mkdir, removing it as it causes DB issues.
+        engine = AMMEngine(design=minimal_design)
+        mock_gemini_response = MagicMock()
+        mock_gemini_response.text = "This is a placeholder Gemini response."
+        engine.ai_model_client = MagicMock()
+        engine.ai_model_client.generate_content.return_value = mock_gemini_response
+>       response = engine.process_query("Hello there?")
+
+tests/unit/test_amm_engine.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <amm_project.engine.amm_engine.AMMEngine object at 0x75420af42630>
+query_text = 'Hello there?'
+
+    def process_query(self, query_text: str) -> str:
+        """Processes a user query by retrieving context, forming a prompt, and querying the AI model."""
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): process_query received query: '{query_text}'")
+    
+        # 1. Retrieve Fixed Knowledge Context
+        fixed_knowledge_chunks: List[Dict[str, Any]] = []
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table exists: {self.lancedb_table is not None}")
+        if hasattr(self, 'lancedb_table_name'):
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table name: {self.lancedb_table_name}")
+        if hasattr(self.lancedb_table, 'name') and self.lancedb_table is not None:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table object name: {self.lancedb_table.name}")
+    
+        if self.lancedb_table: # Check if fixed knowledge is usable
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): About to call _retrieve_fixed_knowledge with query: '{query_text[:50]}...'")
+            # Use a default limit, e.g., 3. This could be made configurable later.
+            fixed_knowledge_chunks = self._retrieve_fixed_knowledge(query_text, limit=3)
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): _retrieve_fixed_knowledge returned {len(fixed_knowledge_chunks)} chunks")
+        else:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Skipping fixed knowledge retrieval because lancedb_table is None")
+    
+        fixed_knowledge_context_str = self._format_fixed_knowledge_for_prompt(fixed_knowledge_chunks)
+        if fixed_knowledge_context_str == "No relevant fixed knowledge found.":
+            # This print statement is for the test assertion
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): No fixed knowledge chunks retrieved or fixed knowledge not enabled/usable.")
+    
+        # 2. Retrieve Adaptive Memory Context
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: {self.design.adaptive_memory.enabled}")
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): {self.db_session_factory is not None}")
+        # The isinstance(MagicMock) check was removed as MagicMock is not available in engine code.
+        if self.db_session_factory is not None:
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type {type(self.db_session_factory)}.")
+    
+        adaptive_context_chunks: List[Dict[str, Any]] = []
+        if self.design.adaptive_memory.enabled and self.db_session_factory: # Use self.db_session_factory
+            self.logger.debug("PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.")
+            adaptive_context_chunks = self._retrieve_adaptive_memory(
+                query_text=query_text, # Pass query_text
+                limit=self.design.adaptive_memory.retrieval_limit
+            )
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved {len(adaptive_context_chunks)} adaptive memory chunks.")
+        else:
+            self.logger.debug(
+                f"PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was FALSE. Adaptive memory retrieval skipped. Enabled: {self.design.adaptive_memory.enabled}, DB Session factory valid: {self.db_session_factory is not None}"
+            )
+            # adaptive_context_chunks remains empty list
+    
+        adaptive_memory_context_str = "No conversation history available."
+        if adaptive_context_chunks:
+            # _retrieve_adaptive_memory returns List[Dict[str, Any]] where each dict has a 'text' key
+            # The 'text' is already formatted like "User: ...\nAI: ..."
+            # To match existing test logic of newest last / oldest first in prompt, reverse if needed.
+            # Let's assume _retrieve_adaptive_memory returns newest first (chronological) or by relevance (semantic).
+            # For prompt construction, oldest user/AI turn first is typical.
+            formatted_interactions = [
+                chunk['text']
+                for chunk in reversed(adaptive_context_chunks) # Reverse to show oldest first in prompt
+            ]
+            adaptive_memory_context_str = "\n\n".join(formatted_interactions) # Use double newline for better separation
+            self.logger.debug(f"PROCESS_QUERY: Retrieved {len(adaptive_context_chunks)} adaptive memory records. Context length: {len(adaptive_memory_context_str)}")
+        else:
+            self.logger.debug("PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.")
+    
+        # 3. Construct the full prompt
+        system_instruction = self.design.agent_prompts.system_instruction
+        full_prompt = f"{system_instruction}\n\n--- Fixed Knowledge Context ---\n{fixed_knowledge_context_str}\n\n--- Conversation History (Adaptive Memory) ---\n{adaptive_memory_context_str}\n\n--- Current Query ---\nUser: {query_text}\nAI:"
+    
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Constructed full prompt. Length: {len(full_prompt)}. Preview: {full_prompt[:300]}...")
+    
+        if not self.ai_model_client:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): AI model client not initialized. Cannot generate response.")
+            return "Error: AI model client not initialized."
+    
+        try:
+            # Get model name from environment variable if available, otherwise use the one from design
+            model_name = os.environ.get('MODEL') or self.design.gemini_config.model_name
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Sending request to Gemini model '{model_name}'.")
+    
+            # Configure generation parameters from AMMDesign
+            generation_config = genai.types.GenerationConfig(
+                temperature=self.design.gemini_config.temperature,
+                top_p=self.design.gemini_config.top_p if self.design.gemini_config.top_p is not None else 0.9,
+                top_k=self.design.gemini_config.top_k if self.design.gemini_config.top_k is not None else 40,
+                max_output_tokens=self.design.gemini_config.max_output_tokens
+            )
+    
+            # Create a GenerativeModel instance with the model name from environment or design
+            model = self.ai_model_client.GenerativeModel(
+                model_name=model_name,
+                generation_config=generation_config
+            )
+    
+            # Generate content using the model
+            response = model.generate_content(full_prompt)
+            ai_response_text = response.text
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Received response from Gemini. Length: {len(ai_response_text)}. Preview: {ai_response_text[:100]}...")
+        except Exception as e:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): ERROR during Gemini API call: {type(e).__name__} - {e}")
+            ai_response_text = f"Error processing query: {e}"
+    
+        # Store interaction in adaptive memory if enabled
+        if self.design.adaptive_memory.enabled:
+>           interaction_to_store = InteractionRecordPydantic(
+                query=query_text,
+                response=ai_response_text,
+                timestamp=datetime.now(timezone.utc),
+                additional_metadata={"engine_instance_id": self.engine_instance_id, "source": "amm_engine_process_query"}
+            )
+E           pydantic_core._pydantic_core.ValidationError: 1 validation error for InteractionRecordPydantic
+E           response
+E             Input should be a valid string [type=string_type, input_value=<MagicMock name='mock.Gen...t' id='128926509359632'>, input_type=MagicMock]
+E               For further information visit https://errors.pydantic.dev/2.11/v/string_type
+
+amm_project/engine/amm_engine.py:541: ValidationError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: f9c58274): _initialize_paths called.
+DEBUG_PATHS (Engine ID: f9c58274): Determined instance_data_path: amm_instances/amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3
+DEBUG_PATHS (Engine ID: f9c58274): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3
+DEBUG_PATHS (Engine ID: f9c58274): LanceDB path set to: amm_instances/amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: f9c58274): SQLite path set to: amm_instances/amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3/adaptive_memory_cache_amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3.sqlite
+DEBUG_PATHS (Engine ID: f9c58274): _initialize_paths completed.
+DEBUG_INIT (Engine ID: f9c58274): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: f9c58274): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: f9c58274): No knowledge sources defined. Skipping LanceDB initialization. self.lancedb_table remains None.
+DEBUG_INIT (Engine ID: f9c58274): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: f9c58274): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: f9c58274): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: f9c58274): Adaptive memory database initialized with factory at sqlite:////home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3/adaptive_memory_cache_amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3.sqlite.
+DEBUG_INIT (Engine ID: f9c58274): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: f9c58274): Final check before __init__ exits try block. AI Client is None: True
+DEBUG_INIT (Engine ID: f9c58274): AMMEngine initialized for design 'TestDesign' (ID: amm_design_1e7bf0d1-d498-400a-af91-02aa69a1c4b3). __init__ ENDED.
+DEBUG_PROCESS (Engine ID: f9c58274): process_query received query: 'Hello there?'
+DEBUG_PROCESS (Engine ID: f9c58274): LanceDB table exists: False
+DEBUG_PROCESS (Engine ID: f9c58274): Skipping fixed knowledge retrieval because lancedb_table is None
+DEBUG_PROCESS (Engine ID: f9c58274): No fixed knowledge chunks retrieved or fixed knowledge not enabled/usable.
+DEBUG_RETRIEVE_AM (Engine ID: f9c58274): Retrieving last 10 interactions.
+DEBUG_RETRIEVE_AM (Engine ID: f9c58274): Retrieved 0 records.
+DEBUG_PROCESS (Engine ID: f9c58274): Constructed full prompt. Length: 228. Preview: You are a helpful AI assistant.
+
+--- Fixed Knowledge Context ---
+No relevant fixed knowledge found.
+
+--- Conversation History (Adaptive Memory) ---
+No conversation history available.
+
+--- Current Query ---
+User: Hello there?
+AI:...
+DEBUG_PROCESS (Engine ID: f9c58274): Sending request to Gemini model 'gemini-2.5-flash-preview-04-17'.
+DEBUG_PROCESS (Engine ID: f9c58274): Received response from Gemini. Length: 0. Preview: <MagicMock name='mock.GenerativeModel().generate_content().text.__getitem__()' id='128926508699232'>...
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:22,939 - AMMEngine_f9c58274 - DEBUG - AMMEngine __init__ STARTED.
+2025-05-19 10:41:22,960 - AMMEngine_f9c58274 - DEBUG - FORMAT_FK: No fixed knowledge chunks to format.
+2025-05-19 10:41:22,960 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+2025-05-19 10:41:22,960 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+2025-05-19 10:41:22,960 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+2025-05-19 10:41:22,960 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+2025-05-19 10:41:22,962 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+2025-05-19 10:41:22,962 - AMMEngine_f9c58274 - DEBUG - PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_f9c58274:amm_engine.py:44 AMMEngine __init__ STARTED.
+DEBUG    AMMEngine_f9c58274:amm_engine.py:335 FORMAT_FK: No fixed knowledge chunks to format.
+DEBUG    AMMEngine_f9c58274:amm_engine.py:466 PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+DEBUG    AMMEngine_f9c58274:amm_engine.py:467 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+DEBUG    AMMEngine_f9c58274:amm_engine.py:470 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+DEBUG    AMMEngine_f9c58274:amm_engine.py:474 PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+DEBUG    AMMEngine_f9c58274:amm_engine.py:479 PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+DEBUG    AMMEngine_f9c58274:amm_engine.py:500 PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+___________________ test_initialize_gemini_client_no_api_key ___________________
+
+self = <MagicMock name='genai.configure' id='128926508733248'>
+
+    def assert_not_called(self):
+        """assert that the mock was never called.
+        """
+        if self.call_count != 0:
+            msg = ("Expected '%s' to not have been called. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'configure' to not have been called. Called 1 times.
+E           Calls: [call(api_key='AIzaSyAqfr9Ii6vBiVmq1hrWXHdEcQkrapr5tXc')].
+
+../../../anaconda3/envs/mcp-env/lib/python3.12/unittest/mock.py:910: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+mock_genai = <MagicMock name='genai' id='128926509118960'>
+minimal_design = AMMDesign(design_id='amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_no_api_key = None
+mock_path_mkdir = <MagicMock name='mkdir' id='128926509114928'>
+capsys = <_pytest.capture.CaptureFixture object at 0x75420ac73620>
+
+    @patch('amm_project.engine.amm_engine.genai') # Keep mock for no_api_key to prevent actual calls
+    def test_initialize_gemini_client_no_api_key(mock_genai, minimal_design, mock_env_no_api_key, mock_path_mkdir, capsys):
+        engine = AMMEngine(design=minimal_design)
+>       mock_genai.configure.assert_not_called()
+E       AssertionError: Expected 'configure' to not have been called. Called 1 times.
+E       Calls: [call(api_key='AIzaSyAqfr9Ii6vBiVmq1hrWXHdEcQkrapr5tXc')].
+E       
+E       pytest introspection follows:
+E       
+E       Kwargs:
+E       assert {'api_key': '...EcQkrapr5tXc'} == {}
+E         
+E         Left contains 1 more item:
+E         {'api_key': 'AIzaSyAqfr9Ii6vBiVmq1hrWXHdEcQkrapr5tXc'}
+E         
+E         Full diff:
+E         - {}
+E         + {
+E         +     'api_key': 'AIzaSyAqfr9Ii6vBiVmq1hrWXHdEcQkrapr5tXc',
+E         + }
+
+tests/unit/test_amm_engine.py:174: AssertionError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: aa522bef): _initialize_paths called.
+DEBUG_PATHS (Engine ID: aa522bef): Determined instance_data_path: amm_instances/amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35
+DEBUG_PATHS (Engine ID: aa522bef): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35
+DEBUG_PATHS (Engine ID: aa522bef): LanceDB path set to: amm_instances/amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: aa522bef): SQLite path set to: amm_instances/amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35/adaptive_memory_cache_amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35.sqlite
+DEBUG_PATHS (Engine ID: aa522bef): _initialize_paths completed.
+DEBUG_GEMINI (Engine ID: aa522bef): _initialize_gemini_client called.
+DEBUG_GEMINI (Engine ID: aa522bef): Using embedding model from design: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_GEMINI (Engine ID: aa522bef): Gemini client initialized successfully.
+DEBUG_GEMINI (Engine ID: aa522bef): _initialize_gemini_client completed. AI Client is None: False, Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_INIT (Engine ID: aa522bef): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: aa522bef): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: aa522bef): No knowledge sources defined. Skipping LanceDB initialization. self.lancedb_table remains None.
+DEBUG_INIT (Engine ID: aa522bef): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: aa522bef): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: aa522bef): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: aa522bef): Error initializing adaptive memory database: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+DEBUG_INIT (Engine ID: aa522bef): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: aa522bef): Final check before __init__ exits try block. AI Client is None: False
+DEBUG_INIT (Engine ID: aa522bef): AMMEngine initialized for design 'TestDesign' (ID: amm_design_4b1352cc-e846-4a32-bb2a-1cd1d2b43a35). __init__ ENDED.
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:23,007 - AMMEngine_aa522bef - DEBUG - AMMEngine __init__ STARTED.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_aa522bef:amm_engine.py:44 AMMEngine __init__ STARTED.
+__________________ test_retrieve_fixed_knowledge_no_ai_client __________________
+
+design_with_one_text_ks = AMMDesign(design_id='amm_design_199707a9-69a4-4202-aa5a-4479371ed08f', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_no_api_key = None
+mock_lancedb = (<MagicMock id='128926508308656'>, <MagicMock name='mock.open_table()' id='128926508316336'>)
+capsys = <_pytest.capture.CaptureFixture object at 0x75420aba4140>
+
+    def test_retrieve_fixed_knowledge_no_ai_client(design_with_one_text_ks, mock_env_no_api_key, mock_lancedb, capsys):
+        """Test _retrieve_fixed_knowledge when ai_model_client is None."""
+        _, mock_table_obj = mock_lancedb
+        engine = AMMEngine(design=design_with_one_text_ks)
+        # ai_model_client will be None due to mock_env_no_api_key
+        engine.lancedb_table = mock_table_obj # Simulate table is there
+    
+        results = engine._retrieve_fixed_knowledge("test query")
+>       assert results == []
+E       AssertionError: assert <MagicMock na...926508891504'> == []
+E         
+E         Full diff:
+E         - []
+E         + <MagicMock name='mock.open_table().search().limit().to_list()' id='128926508891504'>
+
+tests/unit/test_amm_engine.py:418: AssertionError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: 9703c5ed): _initialize_paths called.
+DEBUG_PATHS (Engine ID: 9703c5ed): Determined instance_data_path: amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f
+DEBUG_PATHS (Engine ID: 9703c5ed): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f
+DEBUG_PATHS (Engine ID: 9703c5ed): LanceDB path set to: amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: 9703c5ed): SQLite path set to: amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f/adaptive_memory_cache_amm_design_199707a9-69a4-4202-aa5a-4479371ed08f.sqlite
+DEBUG_PATHS (Engine ID: 9703c5ed): _initialize_paths completed.
+DEBUG_GEMINI (Engine ID: 9703c5ed): _initialize_gemini_client called.
+DEBUG_GEMINI (Engine ID: 9703c5ed): Using embedding model from design: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_GEMINI (Engine ID: 9703c5ed): Gemini client initialized successfully.
+DEBUG_GEMINI (Engine ID: 9703c5ed): _initialize_gemini_client completed. AI Client is None: False, Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_INIT (Engine ID: 9703c5ed): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: 9703c5ed): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: 9703c5ed): AI client configured for embedding: True. Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_FK (Engine ID: 9703c5ed): Processing 1 knowledge sources.
+DEBUG_FK (Engine ID: 9703c5ed): Processing TEXT source: KS ID 4d67e8d1-9a0b-4ae5-8a34-0fbbe0ed95d7 (Test KS)
+DEBUG_FK (Engine ID: 9703c5ed): Attempting to embed content from KS ID 4d67e8d1-9a0b-4ae5-8a34-0fbbe0ed95d7 (Test KS): 'This is a test knowledge content....' using model GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_EMBED (Engine ID: 9703c5ed): _embed_content called for task_type 'RETRIEVAL_DOCUMENT'. Text length: 33.
+DEBUG_FK (Engine ID: 9703c5ed): Successfully embedded and prepared data for KS ID 4d67e8d1-9a0b-4ae5-8a34-0fbbe0ed95d7 (Test KS).
+DEBUG_FK (Engine ID: 9703c5ed): Populated 1 items for LanceDB table.
+DEBUG_FK (Engine ID: 9703c5ed): Successfully connected to LanceDB at 'amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f/lancedb_fixed_knowledge'.
+DEBUG_FK (Engine ID: 9703c5ed): Successfully opened existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: 9703c5ed): Adding 1 items to existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: 9703c5ed): Successfully added items to existing table.
+DEBUG_FK (Engine ID: 9703c5ed): _initialize_fixed_knowledge finished. LanceDB table is set.
+DEBUG_INIT (Engine ID: 9703c5ed): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: 9703c5ed): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: 9703c5ed): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: 9703c5ed): Adaptive memory database initialized with factory at sqlite:////home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_199707a9-69a4-4202-aa5a-4479371ed08f/adaptive_memory_cache_amm_design_199707a9-69a4-4202-aa5a-4479371ed08f.sqlite.
+DEBUG_INIT (Engine ID: 9703c5ed): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: 9703c5ed): Final check before __init__ exits try block. AI Client is None: False
+DEBUG_INIT (Engine ID: 9703c5ed): AMMEngine initialized for design 'TestDesign' (ID: amm_design_199707a9-69a4-4202-aa5a-4479371ed08f). __init__ ENDED.
+DEBUG_RETRIEVE_FK (Engine ID: 9703c5ed): _retrieve_fixed_knowledge called. Query: 'test query...', Limit: 3
+DEBUG_EMBED (Engine ID: 9703c5ed): _embed_content called for task_type 'RETRIEVAL_QUERY'. Text length: 10.
+DEBUG_RETRIEVE_FK (Engine ID: 9703c5ed): Searching LanceDB table 'fixed_knowledge_table' with query embedding. Limit: 3
+DEBUG_RETRIEVE_FK (Engine ID: 9703c5ed): Found 0 results from LanceDB.
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:23,099 - AMMEngine_9703c5ed - DEBUG - AMMEngine __init__ STARTED.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_9703c5ed:amm_engine.py:44 AMMEngine __init__ STARTED.
+_____________ test_process_query_with_fixed_knowledge_integration ______________
+
+mock_init_embed = <MagicMock name='_embed_content' id='128926507690768'>
+mock_retrieve_fixed = <MagicMock name='_retrieve_fixed_knowledge' id='128926507695040'>
+mock_retrieve_adaptive = <MagicMock name='_retrieve_adaptive_memory' id='128926507600592'>
+design_with_one_text_ks = AMMDesign(design_id='amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_api_key = environ({'SHELL': '/bin/bash', 'SESSION_MANAGER': 'local/o2satz-CF:@/tmp/.ICE-unix/8403,unix/o2satz-CF:/tmp/.ICE-unix/...', 'PYTEST_CURRENT_TEST': 'tests/unit/test_amm_engine.py::test_process_query_with_fixed_knowledge_integration (call)'})
+mock_lancedb = (<MagicMock id='128926508180416'>, <MagicMock name='mock.open_table()' id='128926508184592'>)
+mock_ai_client_generate = (<MagicMock id='128926507580880'>, <MagicMock name='mock.generate_content' id='128926507686784'>)
+capsys = <_pytest.capture.CaptureFixture object at 0x75420ab16ae0>
+
+    @patch.object(AMMEngine, '_retrieve_adaptive_memory')
+    @patch.object(AMMEngine, '_retrieve_fixed_knowledge')
+    @patch.object(AMMEngine, '_embed_content') # Mock embed during init
+    def test_process_query_with_fixed_knowledge_integration(
+        mock_init_embed, # Renamed to avoid clash with _embed_content in AMMEngine scope
+        mock_retrieve_fixed,
+        mock_retrieve_adaptive,
+        design_with_one_text_ks,
+        mock_env_api_key,
+        mock_lancedb,
+        mock_ai_client_generate,
+        capsys
+    ):
+        """Test process_query integrates fixed knowledge correctly into the prompt."""
+        fixed_knowledge_results = [
+            {'text': 'Fixed knowledge doc 1 text.', 'source_name': 'doc1.txt'},
+            {'text': 'Another insight from fixed base.', 'source_name': 'manual_entry'}
+        ]
+        mock_retrieve_fixed.return_value = fixed_knowledge_results
+        mock_retrieve_adaptive.return_value = [] # No adaptive memory for this test
+    
+        engine = AMMEngine(design=design_with_one_text_ks)
+        mock_client, mock_generate_content = mock_ai_client_generate
+        engine.ai_model_client = mock_client # Assign the mocked client
+        engine.lancedb_table = mock_lancedb[1] # Assign mocked lancedb_table
+        engine.db_session = MagicMock() # Simulate active DB session for adaptive memory path
+    
+        query_text = "What does fixed knowledge say?"
+>       response = engine.process_query(query_text)
+
+tests/unit/test_amm_engine.py:606: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <amm_project.engine.amm_engine.AMMEngine object at 0x75420ab16b40>
+query_text = 'What does fixed knowledge say?'
+
+    def process_query(self, query_text: str) -> str:
+        """Processes a user query by retrieving context, forming a prompt, and querying the AI model."""
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): process_query received query: '{query_text}'")
+    
+        # 1. Retrieve Fixed Knowledge Context
+        fixed_knowledge_chunks: List[Dict[str, Any]] = []
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table exists: {self.lancedb_table is not None}")
+        if hasattr(self, 'lancedb_table_name'):
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table name: {self.lancedb_table_name}")
+        if hasattr(self.lancedb_table, 'name') and self.lancedb_table is not None:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table object name: {self.lancedb_table.name}")
+    
+        if self.lancedb_table: # Check if fixed knowledge is usable
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): About to call _retrieve_fixed_knowledge with query: '{query_text[:50]}...'")
+            # Use a default limit, e.g., 3. This could be made configurable later.
+            fixed_knowledge_chunks = self._retrieve_fixed_knowledge(query_text, limit=3)
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): _retrieve_fixed_knowledge returned {len(fixed_knowledge_chunks)} chunks")
+        else:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Skipping fixed knowledge retrieval because lancedb_table is None")
+    
+        fixed_knowledge_context_str = self._format_fixed_knowledge_for_prompt(fixed_knowledge_chunks)
+        if fixed_knowledge_context_str == "No relevant fixed knowledge found.":
+            # This print statement is for the test assertion
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): No fixed knowledge chunks retrieved or fixed knowledge not enabled/usable.")
+    
+        # 2. Retrieve Adaptive Memory Context
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: {self.design.adaptive_memory.enabled}")
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): {self.db_session_factory is not None}")
+        # The isinstance(MagicMock) check was removed as MagicMock is not available in engine code.
+        if self.db_session_factory is not None:
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type {type(self.db_session_factory)}.")
+    
+        adaptive_context_chunks: List[Dict[str, Any]] = []
+        if self.design.adaptive_memory.enabled and self.db_session_factory: # Use self.db_session_factory
+            self.logger.debug("PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.")
+            adaptive_context_chunks = self._retrieve_adaptive_memory(
+                query_text=query_text, # Pass query_text
+                limit=self.design.adaptive_memory.retrieval_limit
+            )
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved {len(adaptive_context_chunks)} adaptive memory chunks.")
+        else:
+            self.logger.debug(
+                f"PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was FALSE. Adaptive memory retrieval skipped. Enabled: {self.design.adaptive_memory.enabled}, DB Session factory valid: {self.db_session_factory is not None}"
+            )
+            # adaptive_context_chunks remains empty list
+    
+        adaptive_memory_context_str = "No conversation history available."
+        if adaptive_context_chunks:
+            # _retrieve_adaptive_memory returns List[Dict[str, Any]] where each dict has a 'text' key
+            # The 'text' is already formatted like "User: ...\nAI: ..."
+            # To match existing test logic of newest last / oldest first in prompt, reverse if needed.
+            # Let's assume _retrieve_adaptive_memory returns newest first (chronological) or by relevance (semantic).
+            # For prompt construction, oldest user/AI turn first is typical.
+            formatted_interactions = [
+                chunk['text']
+                for chunk in reversed(adaptive_context_chunks) # Reverse to show oldest first in prompt
+            ]
+            adaptive_memory_context_str = "\n\n".join(formatted_interactions) # Use double newline for better separation
+            self.logger.debug(f"PROCESS_QUERY: Retrieved {len(adaptive_context_chunks)} adaptive memory records. Context length: {len(adaptive_memory_context_str)}")
+        else:
+            self.logger.debug("PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.")
+    
+        # 3. Construct the full prompt
+        system_instruction = self.design.agent_prompts.system_instruction
+        full_prompt = f"{system_instruction}\n\n--- Fixed Knowledge Context ---\n{fixed_knowledge_context_str}\n\n--- Conversation History (Adaptive Memory) ---\n{adaptive_memory_context_str}\n\n--- Current Query ---\nUser: {query_text}\nAI:"
+    
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Constructed full prompt. Length: {len(full_prompt)}. Preview: {full_prompt[:300]}...")
+    
+        if not self.ai_model_client:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): AI model client not initialized. Cannot generate response.")
+            return "Error: AI model client not initialized."
+    
+        try:
+            # Get model name from environment variable if available, otherwise use the one from design
+            model_name = os.environ.get('MODEL') or self.design.gemini_config.model_name
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Sending request to Gemini model '{model_name}'.")
+    
+            # Configure generation parameters from AMMDesign
+            generation_config = genai.types.GenerationConfig(
+                temperature=self.design.gemini_config.temperature,
+                top_p=self.design.gemini_config.top_p if self.design.gemini_config.top_p is not None else 0.9,
+                top_k=self.design.gemini_config.top_k if self.design.gemini_config.top_k is not None else 40,
+                max_output_tokens=self.design.gemini_config.max_output_tokens
+            )
+    
+            # Create a GenerativeModel instance with the model name from environment or design
+            model = self.ai_model_client.GenerativeModel(
+                model_name=model_name,
+                generation_config=generation_config
+            )
+    
+            # Generate content using the model
+            response = model.generate_content(full_prompt)
+            ai_response_text = response.text
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Received response from Gemini. Length: {len(ai_response_text)}. Preview: {ai_response_text[:100]}...")
+        except Exception as e:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): ERROR during Gemini API call: {type(e).__name__} - {e}")
+            ai_response_text = f"Error processing query: {e}"
+    
+        # Store interaction in adaptive memory if enabled
+        if self.design.adaptive_memory.enabled:
+>           interaction_to_store = InteractionRecordPydantic(
+                query=query_text,
+                response=ai_response_text,
+                timestamp=datetime.now(timezone.utc),
+                additional_metadata={"engine_instance_id": self.engine_instance_id, "source": "amm_engine_process_query"}
+            )
+E           pydantic_core._pydantic_core.ValidationError: 1 validation error for InteractionRecordPydantic
+E           response
+E             Input should be a valid string [type=string_type, input_value=<MagicMock name='mock.Gen...t' id='128926508724880'>, input_type=MagicMock]
+E               For further information visit https://errors.pydantic.dev/2.11/v/string_type
+
+amm_project/engine/amm_engine.py:541: ValidationError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: c59077a4): _initialize_paths called.
+DEBUG_PATHS (Engine ID: c59077a4): Determined instance_data_path: amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f
+DEBUG_PATHS (Engine ID: c59077a4): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f
+DEBUG_PATHS (Engine ID: c59077a4): LanceDB path set to: amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: c59077a4): SQLite path set to: amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f/adaptive_memory_cache_amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f.sqlite
+DEBUG_PATHS (Engine ID: c59077a4): _initialize_paths completed.
+DEBUG_GEMINI (Engine ID: c59077a4): _initialize_gemini_client called.
+DEBUG_GEMINI (Engine ID: c59077a4): Using embedding model from design: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_GEMINI (Engine ID: c59077a4): Gemini client initialized successfully.
+DEBUG_GEMINI (Engine ID: c59077a4): _initialize_gemini_client completed. AI Client is None: False, Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_INIT (Engine ID: c59077a4): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: c59077a4): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: c59077a4): AI client configured for embedding: True. Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_FK (Engine ID: c59077a4): Processing 1 knowledge sources.
+DEBUG_FK (Engine ID: c59077a4): Processing TEXT source: KS ID da926973-1727-44a9-9311-cfd8a7e7e259 (Test KS)
+DEBUG_FK (Engine ID: c59077a4): Attempting to embed content from KS ID da926973-1727-44a9-9311-cfd8a7e7e259 (Test KS): 'This is a test knowledge content....' using model GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_FK (Engine ID: c59077a4): Successfully embedded and prepared data for KS ID da926973-1727-44a9-9311-cfd8a7e7e259 (Test KS).
+DEBUG_FK (Engine ID: c59077a4): Populated 1 items for LanceDB table.
+DEBUG_FK (Engine ID: c59077a4): Successfully connected to LanceDB at 'amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f/lancedb_fixed_knowledge'.
+DEBUG_FK (Engine ID: c59077a4): Successfully opened existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: c59077a4): Adding 1 items to existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: c59077a4): Successfully added items to existing table.
+DEBUG_FK (Engine ID: c59077a4): _initialize_fixed_knowledge finished. LanceDB table is set.
+DEBUG_INIT (Engine ID: c59077a4): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: c59077a4): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: c59077a4): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: c59077a4): Adaptive memory database initialized with factory at sqlite:////home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f/adaptive_memory_cache_amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f.sqlite.
+DEBUG_INIT (Engine ID: c59077a4): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: c59077a4): Final check before __init__ exits try block. AI Client is None: False
+DEBUG_INIT (Engine ID: c59077a4): AMMEngine initialized for design 'TestDesign' (ID: amm_design_c9b72d2c-6355-45fd-a8af-0dba4865304f). __init__ ENDED.
+DEBUG_PROCESS (Engine ID: c59077a4): process_query received query: 'What does fixed knowledge say?'
+DEBUG_PROCESS (Engine ID: c59077a4): LanceDB table exists: True
+DEBUG_PROCESS (Engine ID: c59077a4): LanceDB table object name: <MagicMock name='mock.open_table().name' id='128926509496992'>
+DEBUG_PROCESS (Engine ID: c59077a4): About to call _retrieve_fixed_knowledge with query: 'What does fixed knowledge say?...'
+DEBUG_PROCESS (Engine ID: c59077a4): _retrieve_fixed_knowledge returned 2 chunks
+DEBUG_PROCESS (Engine ID: c59077a4): Constructed full prompt. Length: 333. Preview: You are a helpful AI assistant.
+
+--- Fixed Knowledge Context ---
+Chunk 1 (Source: doc1.txt):
+Fixed knowledge doc 1 text.
+
+Chunk 2 (Source: manual_entry):
+Another insight from fixed base.
+
+--- Conversation History (Adaptive Memory) ---
+No conversation history available.
+
+--- Current Query ---
+User: W...
+DEBUG_PROCESS (Engine ID: c59077a4): Sending request to Gemini model 'gemini-2.5-flash-preview-04-17'.
+DEBUG_PROCESS (Engine ID: c59077a4): Received response from Gemini. Length: 0. Preview: <MagicMock name='mock.GenerativeModel().generate_content().text.__getitem__()' id='128926508735264'>...
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:23,704 - AMMEngine_c59077a4 - DEBUG - AMMEngine __init__ STARTED.
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - FORMAT_FK: Formatted 2 fixed knowledge chunks. Result length: 121
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+2025-05-19 10:41:23,775 - AMMEngine_c59077a4 - DEBUG - PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_c59077a4:amm_engine.py:44 AMMEngine __init__ STARTED.
+DEBUG    AMMEngine_c59077a4:amm_engine.py:345 FORMAT_FK: Formatted 2 fixed knowledge chunks. Result length: 121
+DEBUG    AMMEngine_c59077a4:amm_engine.py:466 PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+DEBUG    AMMEngine_c59077a4:amm_engine.py:467 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+DEBUG    AMMEngine_c59077a4:amm_engine.py:470 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+DEBUG    AMMEngine_c59077a4:amm_engine.py:474 PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+DEBUG    AMMEngine_c59077a4:amm_engine.py:479 PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+DEBUG    AMMEngine_c59077a4:amm_engine.py:500 PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+___________ test_process_query_no_fixed_knowledge_found_integration ____________
+
+mock_init_embed = <MagicMock name='_embed_content' id='128926509405280'>
+mock_retrieve_fixed = <MagicMock name='_retrieve_fixed_knowledge' id='128926509411376'>
+mock_retrieve_adaptive = <MagicMock name='_retrieve_adaptive_memory' id='128926509412480'>
+design_with_one_text_ks = AMMDesign(design_id='amm_design_a1074a72-592a-4f32-907f-9f7b39e50156', name='TestDesign', description=None, version='0...I assistant.', welcome_message='Hello! How can I assist you today?'), ui_metadata={}, created_at=None, updated_at=None)
+mock_env_api_key = environ({'SHELL': '/bin/bash', 'SESSION_MANAGER': 'local/o2satz-CF:@/tmp/.ICE-unix/8403,unix/o2satz-CF:/tmp/.ICE-unix/...PYTEST_CURRENT_TEST': 'tests/unit/test_amm_engine.py::test_process_query_no_fixed_knowledge_found_integration (call)'})
+mock_lancedb = (<MagicMock id='128926509352528'>, <MagicMock name='mock.open_table()' id='128926509367264'>)
+mock_ai_client_generate = (<MagicMock id='128926511541680'>, <MagicMock name='mock.generate_content' id='128926509400624'>)
+capsys = <_pytest.capture.CaptureFixture object at 0x75420acb9520>
+
+    @patch.object(AMMEngine, '_retrieve_adaptive_memory')
+    @patch.object(AMMEngine, '_retrieve_fixed_knowledge')
+    @patch.object(AMMEngine, '_embed_content') # Mock embed during init
+    def test_process_query_no_fixed_knowledge_found_integration(
+        mock_init_embed, # Renamed for clarity
+        mock_retrieve_fixed,
+        mock_retrieve_adaptive,
+        design_with_one_text_ks,
+        mock_env_api_key,
+        mock_lancedb,
+        mock_ai_client_generate,
+        capsys
+    ):
+        """Test process_query handles no fixed knowledge found correctly."""
+        mock_retrieve_fixed.return_value = [] # No fixed knowledge
+        mock_retrieve_adaptive.return_value = [] # No adaptive memory
+    
+        engine = AMMEngine(design=design_with_one_text_ks)
+        mock_client, mock_generate_content = mock_ai_client_generate
+        engine.ai_model_client = mock_client
+        engine.lancedb_table = mock_lancedb[1]
+        engine.db_session = MagicMock() # Simulate active DB session for adaptive memory path
+    
+        query_text = "Anything new?"
+>       response = engine.process_query(query_text)
+
+tests/unit/test_amm_engine.py:653: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <amm_project.engine.amm_engine.AMMEngine object at 0x75420acb95e0>
+query_text = 'Anything new?'
+
+    def process_query(self, query_text: str) -> str:
+        """Processes a user query by retrieving context, forming a prompt, and querying the AI model."""
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): process_query received query: '{query_text}'")
+    
+        # 1. Retrieve Fixed Knowledge Context
+        fixed_knowledge_chunks: List[Dict[str, Any]] = []
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table exists: {self.lancedb_table is not None}")
+        if hasattr(self, 'lancedb_table_name'):
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table name: {self.lancedb_table_name}")
+        if hasattr(self.lancedb_table, 'name') and self.lancedb_table is not None:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): LanceDB table object name: {self.lancedb_table.name}")
+    
+        if self.lancedb_table: # Check if fixed knowledge is usable
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): About to call _retrieve_fixed_knowledge with query: '{query_text[:50]}...'")
+            # Use a default limit, e.g., 3. This could be made configurable later.
+            fixed_knowledge_chunks = self._retrieve_fixed_knowledge(query_text, limit=3)
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): _retrieve_fixed_knowledge returned {len(fixed_knowledge_chunks)} chunks")
+        else:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Skipping fixed knowledge retrieval because lancedb_table is None")
+    
+        fixed_knowledge_context_str = self._format_fixed_knowledge_for_prompt(fixed_knowledge_chunks)
+        if fixed_knowledge_context_str == "No relevant fixed knowledge found.":
+            # This print statement is for the test assertion
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): No fixed knowledge chunks retrieved or fixed knowledge not enabled/usable.")
+    
+        # 2. Retrieve Adaptive Memory Context
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: {self.design.adaptive_memory.enabled}")
+        self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): {self.db_session_factory is not None}")
+        # The isinstance(MagicMock) check was removed as MagicMock is not available in engine code.
+        if self.db_session_factory is not None:
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type {type(self.db_session_factory)}.")
+    
+        adaptive_context_chunks: List[Dict[str, Any]] = []
+        if self.design.adaptive_memory.enabled and self.db_session_factory: # Use self.db_session_factory
+            self.logger.debug("PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.")
+            adaptive_context_chunks = self._retrieve_adaptive_memory(
+                query_text=query_text, # Pass query_text
+                limit=self.design.adaptive_memory.retrieval_limit
+            )
+            self.logger.debug(f"PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved {len(adaptive_context_chunks)} adaptive memory chunks.")
+        else:
+            self.logger.debug(
+                f"PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was FALSE. Adaptive memory retrieval skipped. Enabled: {self.design.adaptive_memory.enabled}, DB Session factory valid: {self.db_session_factory is not None}"
+            )
+            # adaptive_context_chunks remains empty list
+    
+        adaptive_memory_context_str = "No conversation history available."
+        if adaptive_context_chunks:
+            # _retrieve_adaptive_memory returns List[Dict[str, Any]] where each dict has a 'text' key
+            # The 'text' is already formatted like "User: ...\nAI: ..."
+            # To match existing test logic of newest last / oldest first in prompt, reverse if needed.
+            # Let's assume _retrieve_adaptive_memory returns newest first (chronological) or by relevance (semantic).
+            # For prompt construction, oldest user/AI turn first is typical.
+            formatted_interactions = [
+                chunk['text']
+                for chunk in reversed(adaptive_context_chunks) # Reverse to show oldest first in prompt
+            ]
+            adaptive_memory_context_str = "\n\n".join(formatted_interactions) # Use double newline for better separation
+            self.logger.debug(f"PROCESS_QUERY: Retrieved {len(adaptive_context_chunks)} adaptive memory records. Context length: {len(adaptive_memory_context_str)}")
+        else:
+            self.logger.debug("PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.")
+    
+        # 3. Construct the full prompt
+        system_instruction = self.design.agent_prompts.system_instruction
+        full_prompt = f"{system_instruction}\n\n--- Fixed Knowledge Context ---\n{fixed_knowledge_context_str}\n\n--- Conversation History (Adaptive Memory) ---\n{adaptive_memory_context_str}\n\n--- Current Query ---\nUser: {query_text}\nAI:"
+    
+        print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Constructed full prompt. Length: {len(full_prompt)}. Preview: {full_prompt[:300]}...")
+    
+        if not self.ai_model_client:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): AI model client not initialized. Cannot generate response.")
+            return "Error: AI model client not initialized."
+    
+        try:
+            # Get model name from environment variable if available, otherwise use the one from design
+            model_name = os.environ.get('MODEL') or self.design.gemini_config.model_name
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Sending request to Gemini model '{model_name}'.")
+    
+            # Configure generation parameters from AMMDesign
+            generation_config = genai.types.GenerationConfig(
+                temperature=self.design.gemini_config.temperature,
+                top_p=self.design.gemini_config.top_p if self.design.gemini_config.top_p is not None else 0.9,
+                top_k=self.design.gemini_config.top_k if self.design.gemini_config.top_k is not None else 40,
+                max_output_tokens=self.design.gemini_config.max_output_tokens
+            )
+    
+            # Create a GenerativeModel instance with the model name from environment or design
+            model = self.ai_model_client.GenerativeModel(
+                model_name=model_name,
+                generation_config=generation_config
+            )
+    
+            # Generate content using the model
+            response = model.generate_content(full_prompt)
+            ai_response_text = response.text
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): Received response from Gemini. Length: {len(ai_response_text)}. Preview: {ai_response_text[:100]}...")
+        except Exception as e:
+            print(f"DEBUG_PROCESS (Engine ID: {self.engine_instance_id}): ERROR during Gemini API call: {type(e).__name__} - {e}")
+            ai_response_text = f"Error processing query: {e}"
+    
+        # Store interaction in adaptive memory if enabled
+        if self.design.adaptive_memory.enabled:
+>           interaction_to_store = InteractionRecordPydantic(
+                query=query_text,
+                response=ai_response_text,
+                timestamp=datetime.now(timezone.utc),
+                additional_metadata={"engine_instance_id": self.engine_instance_id, "source": "amm_engine_process_query"}
+            )
+E           pydantic_core._pydantic_core.ValidationError: 1 validation error for InteractionRecordPydantic
+E           response
+E             Input should be a valid string [type=string_type, input_value=<MagicMock name='mock.Gen...t' id='128926508938160'>, input_type=MagicMock]
+E               For further information visit https://errors.pydantic.dev/2.11/v/string_type
+
+amm_project/engine/amm_engine.py:541: ValidationError
+----------------------------- Captured stdout call -----------------------------
+DEBUG_PATHS (Engine ID: 6f680665): _initialize_paths called.
+DEBUG_PATHS (Engine ID: 6f680665): Determined instance_data_path: amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156
+DEBUG_PATHS (Engine ID: 6f680665): Ensured instance_data_path exists: /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156
+DEBUG_PATHS (Engine ID: 6f680665): LanceDB path set to: amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156/lancedb_fixed_knowledge
+DEBUG_PATHS (Engine ID: 6f680665): SQLite path set to: amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156/adaptive_memory_cache_amm_design_a1074a72-592a-4f32-907f-9f7b39e50156.sqlite
+DEBUG_PATHS (Engine ID: 6f680665): _initialize_paths completed.
+DEBUG_GEMINI (Engine ID: 6f680665): _initialize_gemini_client called.
+DEBUG_GEMINI (Engine ID: 6f680665): Using embedding model from design: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_GEMINI (Engine ID: 6f680665): Gemini client initialized successfully.
+DEBUG_GEMINI (Engine ID: 6f680665): _initialize_gemini_client completed. AI Client is None: False, Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_INIT (Engine ID: 6f680665): About to call _initialize_fixed_knowledge.
+DEBUG_FK (Engine ID: 6f680665): _initialize_fixed_knowledge CALLED.
+DEBUG_FK (Engine ID: 6f680665): AI client configured for embedding: True. Embedding model: GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_FK (Engine ID: 6f680665): Processing 1 knowledge sources.
+DEBUG_FK (Engine ID: 6f680665): Processing TEXT source: KS ID 3cdc4352-c598-4f73-b36a-9472a575dd6c (Test KS)
+DEBUG_FK (Engine ID: 6f680665): Attempting to embed content from KS ID 3cdc4352-c598-4f73-b36a-9472a575dd6c (Test KS): 'This is a test knowledge content....' using model GeminiModelType.TEXT_EMBEDDING_004
+DEBUG_FK (Engine ID: 6f680665): Successfully embedded and prepared data for KS ID 3cdc4352-c598-4f73-b36a-9472a575dd6c (Test KS).
+DEBUG_FK (Engine ID: 6f680665): Populated 1 items for LanceDB table.
+DEBUG_FK (Engine ID: 6f680665): Successfully connected to LanceDB at 'amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156/lancedb_fixed_knowledge'.
+DEBUG_FK (Engine ID: 6f680665): Successfully opened existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: 6f680665): Adding 1 items to existing LanceDB table 'fixed_knowledge_table'.
+DEBUG_FK (Engine ID: 6f680665): Successfully added items to existing table.
+DEBUG_FK (Engine ID: 6f680665): _initialize_fixed_knowledge finished. LanceDB table is set.
+DEBUG_INIT (Engine ID: 6f680665): Finished _initialize_fixed_knowledge call.
+DEBUG_INIT (Engine ID: 6f680665): About to call _initialize_adaptive_memory.
+DEBUG_ADAPTIVE_MEM (Engine ID: 6f680665): _initialize_adaptive_memory called.
+DEBUG_ADAPTIVE_MEM (Engine ID: 6f680665): Adaptive memory database initialized with factory at sqlite:////home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_instances/amm_design_a1074a72-592a-4f32-907f-9f7b39e50156/adaptive_memory_cache_amm_design_a1074a72-592a-4f32-907f-9f7b39e50156.sqlite.
+DEBUG_INIT (Engine ID: 6f680665): Finished _initialize_adaptive_memory call.
+DEBUG_INIT (Engine ID: 6f680665): Final check before __init__ exits try block. AI Client is None: False
+DEBUG_INIT (Engine ID: 6f680665): AMMEngine initialized for design 'TestDesign' (ID: amm_design_a1074a72-592a-4f32-907f-9f7b39e50156). __init__ ENDED.
+DEBUG_PROCESS (Engine ID: 6f680665): process_query received query: 'Anything new?'
+DEBUG_PROCESS (Engine ID: 6f680665): LanceDB table exists: True
+DEBUG_PROCESS (Engine ID: 6f680665): LanceDB table object name: <MagicMock name='mock.open_table().name' id='128926509176144'>
+DEBUG_PROCESS (Engine ID: 6f680665): About to call _retrieve_fixed_knowledge with query: 'Anything new?...'
+DEBUG_PROCESS (Engine ID: 6f680665): _retrieve_fixed_knowledge returned 0 chunks
+DEBUG_PROCESS (Engine ID: 6f680665): No fixed knowledge chunks retrieved or fixed knowledge not enabled/usable.
+DEBUG_PROCESS (Engine ID: 6f680665): Constructed full prompt. Length: 229. Preview: You are a helpful AI assistant.
+
+--- Fixed Knowledge Context ---
+No relevant fixed knowledge found.
+
+--- Conversation History (Adaptive Memory) ---
+No conversation history available.
+
+--- Current Query ---
+User: Anything new?
+AI:...
+DEBUG_PROCESS (Engine ID: 6f680665): Sending request to Gemini model 'gemini-2.5-flash-preview-04-17'.
+DEBUG_PROCESS (Engine ID: 6f680665): Received response from Gemini. Length: 0. Preview: <MagicMock name='mock.GenerativeModel().generate_content().text.__getitem__()' id='128926509143136'>...
+----------------------------- Captured stderr call -----------------------------
+2025-05-19 10:41:23,787 - AMMEngine_6f680665 - DEBUG - AMMEngine __init__ STARTED.
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - FORMAT_FK: No fixed knowledge chunks to format.
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+2025-05-19 10:41:23,803 - AMMEngine_6f680665 - DEBUG - PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+------------------------------ Captured log call -------------------------------
+DEBUG    AMMEngine_6f680665:amm_engine.py:44 AMMEngine __init__ STARTED.
+DEBUG    AMMEngine_6f680665:amm_engine.py:335 FORMAT_FK: No fixed knowledge chunks to format.
+DEBUG    AMMEngine_6f680665:amm_engine.py:466 PROCESS_QUERY_ADAPTIVE_CHECK: Design Adaptive Memory Enabled: True
+DEBUG    AMMEngine_6f680665:amm_engine.py:467 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory available (is not None): True
+DEBUG    AMMEngine_6f680665:amm_engine.py:470 PROCESS_QUERY_ADAPTIVE_CHECK: DB Session factory is of type <class 'sqlalchemy.orm.session.sessionmaker'>.
+DEBUG    AMMEngine_6f680665:amm_engine.py:474 PROCESS_QUERY_ADAPTIVE_LOGIC: Condition was TRUE. Attempting to retrieve adaptive memory.
+DEBUG    AMMEngine_6f680665:amm_engine.py:479 PROCESS_QUERY_ADAPTIVE_LOGIC: Retrieved 0 adaptive memory chunks.
+DEBUG    AMMEngine_6f680665:amm_engine.py:500 PROCESS_QUERY: No adaptive memory records retrieved or adaptive memory disabled.
+_________________________ test_gemini_config_defaults __________________________
+
+    def test_gemini_config_defaults():
+        config = GeminiConfig()
+>       assert config.model_name == GeminiModelType.GEMINI_FLASH_LATEST
+E       AssertionError: assert <GeminiModelT...review-04-17'> == <GeminiModelT...flash-latest'>
+E         
+E         - models/gemini-1.5-flash-latest
+E         + gemini-2.5-flash-preview-04-17
+
+tests/unit/test_amm_models.py:74: AssertionError
+____________________________ test_generate_endpoint ____________________________
+
+test_client = <starlette.testclient.TestClient object at 0x75420a9b8800>
+
+    def test_generate_endpoint(test_client):
+        """Test the generate endpoint."""
+        response = test_client.post(
+            "/generate",
+            json={"query": "Test query", "parameters": {}, "context": {}}
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/unit/test_mcp_server.py:149: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+MCP Server Configuration:
+- Design Path: design.json
+- Build Directory: .
+- Python Path: ['/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/anaconda3/envs/mcp-env/lib/python312.zip', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/lib-dynload', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/site-packages', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates']
+WARNING: Design file not found at design.json
+ERROR initializing model server: NameError - name 'AdaptiveMemory' is not defined
+------------------------------ Captured log setup ------------------------------
+ERROR    amm_mcp_server:<string>:101 Failed to initialize AMM Model Server: [Errno 2] No such file or directory: 'design.json'
+ERROR    amm_mcp_server:<string>:116 Failed to create fallback design: name 'AdaptiveMemory' is not defined
+ERROR    amm_mcp_server:<string>:213 Failed to initialize model server: name 'AdaptiveMemory' is not defined
+----------------------------- Captured stdout call -----------------------------
+Processing request: Test query...
+ERROR: Error processing request: AttributeError - 'MockAMMEngine' object has no attribute 'process_request'
+___________________________ test_api_key_validation ____________________________
+
+patched_mcp_server = {'AMMDesign': <class 'tests.unit.test_mcp_server.MockAMMDesign'>, 'AMMEngine': <class 'tests.unit.test_mcp_server.MockAMMEngine'>, 'AMMModelServer': <class 'AMMModelServer'>, 'Any': typing.Any, ...}
+
+    def test_api_key_validation(patched_mcp_server):
+        """Test API key validation."""
+        # Set API_KEY_REQUIRED to true
+        with patch.dict('os.environ', {'API_KEY_REQUIRED': 'true', 'MCP_API_KEY': 'test_key'}):
+            # Create a test client
+            app = patched_mcp_server.get('app')
+            client = TestClient(app)
+    
+            # Test without API key
+            response = client.get("/info")
+            assert response.status_code == 401
+    
+            # Test with correct API key in header
+            response = client.get("/info", headers={"X-API-Key": "test_key"})
+>           assert response.status_code == 200
+E           assert 500 == 200
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/unit/test_mcp_server.py:184: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+MCP Server Configuration:
+- Design Path: design.json
+- Build Directory: .
+- Python Path: ['/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/anaconda3/envs/mcp-env/lib/python312.zip', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/lib-dynload', '/home/o2satz/anaconda3/envs/mcp-env/lib/python3.12/site-packages', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates', '/home/o2satz/MyGit/AFTER_CRASH/May19_AMM/amm_project/templates']
+WARNING: Design file not found at design.json
+ERROR initializing model server: NameError - name 'AdaptiveMemory' is not defined
+------------------------------ Captured log setup ------------------------------
+ERROR    amm_mcp_server:<string>:101 Failed to initialize AMM Model Server: [Errno 2] No such file or directory: 'design.json'
+ERROR    amm_mcp_server:<string>:116 Failed to create fallback design: name 'AdaptiveMemory' is not defined
+ERROR    amm_mcp_server:<string>:213 Failed to initialize model server: name 'AdaptiveMemory' is not defined
+----------------------------- Captured stdout call -----------------------------
+Initializing model server on demand...
+ERROR: Failed to initialize model server: NameError - name 'AdaptiveMemory' is not defined
+------------------------------ Captured log call -------------------------------
+ERROR    amm_mcp_server:<string>:101 Failed to initialize AMM Model Server: [Errno 2] No such file or directory: 'design.json'
+ERROR    amm_mcp_server:<string>:116 Failed to create fallback design: name 'AdaptiveMemory' is not defined
+________________________ test_build_amm_with_mcp_server ________________________
+
+    def test_build_amm_with_mcp_server():
+        """Test building an AMM with MCP server option."""
+        from build_amm import build_amm, BuildType
+    
+        # Create a temporary design file
+        design_json = json.dumps(MINIMAL_DESIGN)
+    
+        # Mock the file operations
+        with patch('builtins.open', mock_open(read_data=design_json)), \
+             patch('pathlib.Path.mkdir'), \
+             patch('shutil.copy'), \
+             patch('shutil.copy2'), \
+             patch('build_amm.write_run_amm'):
+    
+            # Call build_amm with MCP_SERVER build type
+            output_path = build_amm(
+                design_json_path="test_design.json",
+                output_root_dir="test_output",
+                requirements_path="test_requirements.txt",
+                build_type=BuildType.MCP_SERVER
+            )
+    
+            # Check that the output path is returned
+            assert output_path is not None
+            assert "test_output" in output_path
+>           assert "test_amm" in output_path
+E           AssertionError: assert 'test_amm' in 'test_output/amm_design_6067587c-1ecb-4bdb-887f-29db8ad8ef53'
+
+tests/unit/test_mcp_server.py:219: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Building AMM package for 'Test AMM' (ID: amm_design_6067587c-1ecb-4bdb-887f-29db8ad8ef53)
+Build type: BuildType.MCP_SERVER
+Added MCP server file: mcp_server.py
+Added MCP server run script: run_mcp_server.py
+Added self-contained amm_engine.py module
+Added self-contained amm_models.py module
+AMM build complete at: test_output/amm_design_6067587c-1ecb-4bdb-887f-29db8ad8ef53
+=============================== warnings summary ===============================
+tests/unit/test_mcp_server.py::test_build_amm_with_mcp_server
+  /home/o2satz/MyGit/AFTER_CRASH/May19_AMM/build_amm.py:62: PydanticDeprecatedSince20: The `json` method is deprecated; use `model_dump_json` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    f.write(design.json())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/unit/test_amm_engine.py::test_amm_engine_initialization_no_api_key
+FAILED tests/unit/test_amm_engine.py::test_amm_engine_process_query_placeholder
+FAILED tests/unit/test_amm_engine.py::test_initialize_gemini_client_no_api_key
+FAILED tests/unit/test_amm_engine.py::test_retrieve_fixed_knowledge_no_ai_client
+FAILED tests/unit/test_amm_engine.py::test_process_query_with_fixed_knowledge_integration
+FAILED tests/unit/test_amm_engine.py::test_process_query_no_fixed_knowledge_found_integration
+FAILED tests/unit/test_amm_models.py::test_gemini_config_defaults - Assertion...
+FAILED tests/unit/test_mcp_server.py::test_generate_endpoint - assert 500 == 200
+FAILED tests/unit/test_mcp_server.py::test_api_key_validation - assert 500 ==...
+FAILED tests/unit/test_mcp_server.py::test_build_amm_with_mcp_server - Assert...
+=================== 10 failed, 37 passed, 1 warning in 1.63s ===================
+Tests completed.
