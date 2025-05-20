@@ -460,6 +460,13 @@ def mcp_server_manager():
                         with st.spinner("Processing query..."):
                             try:
                                 import requests
+                                
+                                # Get server details for API key
+                                server_details = st.session_state.mcp_servers.get(server['id'])
+                                headers = {}
+                                if server_details and server_details.get("api_key_required") and server_details.get("api_key"):
+                                    headers = {"X-API-Key": server_details["api_key"]}
+                                
                                 response = requests.post(
                                     f"{server['url']}/generate",
                                     json={
@@ -467,6 +474,7 @@ def mcp_server_manager():
                                         "parameters": {},
                                         "context": {}
                                     },
+                                    headers=headers,
                                     timeout=30
                                 )
                                 
