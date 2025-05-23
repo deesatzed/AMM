@@ -460,6 +460,13 @@ def mcp_server_manager():
                         with st.spinner("Processing query..."):
                             try:
                                 import requests
+                                
+                                # Get server details for API key
+                                server_details = st.session_state.mcp_servers.get(server['id'])
+                                headers = {}
+                                if server_details and server_details.get("api_key_required") and server_details.get("api_key"):
+                                    headers = {"X-API-Key": server_details["api_key"]}
+                                
                                 response = requests.post(
                                     f"{server['url']}/generate",
                                     json={
@@ -467,6 +474,7 @@ def mcp_server_manager():
                                         "parameters": {},
                                         "context": {}
                                     },
+                                    headers=headers,
                                     timeout=30
                                 )
                                 
@@ -478,7 +486,8 @@ def mcp_server_manager():
                                     # Show metadata if present
                                     metadata = result.get("metadata", {})
                                     if metadata:
-                                        with st.expander("Response Metadata"):
+                                        # Use a unique key for the checkbox based on the server ID
+                                        if st.checkbox("Show Response Metadata", key=f"show_meta_{server['id']}"):
                                             st.json(metadata)
                                 else:
                                     st.error(f"Error from MCP server: Status code {response.status_code}")

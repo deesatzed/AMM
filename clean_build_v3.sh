@@ -8,6 +8,13 @@
 
 # Set environment and working directory
 set -e  # Exit on any error
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  SED_I_ARG="-i ''" # macOS requires an argument for -i (empty string for no backup)
+else
+  SED_I_ARG="-i"    # Linux sed -i
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
@@ -289,23 +296,23 @@ cp "$SOURCE_DIR/.env.example" "$FINAL_BUILD_DIR/.env.example"
 echo "Cleaning Python files of any test/mock code..."
 find "$FINAL_BUILD_DIR" -name "*.py" | while read file; do
     # Remove unittest.mock imports
-    sed -i '/from unittest.mock import/d' "$file"
-    sed -i '/import unittest.mock/d' "$file"
-    sed -i '/from unittest import mock/d' "$file"
+    sed $SED_I_ARG '/from unittest.mock import/d' "$file"
+    sed $SED_I_ARG '/import unittest.mock/d' "$file"
+    sed $SED_I_ARG '/from unittest import mock/d' "$file"
     
     # Remove pytest imports
-    sed -i '/import pytest/d' "$file"
-    sed -i '/from pytest import/d' "$file"
+    sed $SED_I_ARG '/import pytest/d' "$file"
+    sed $SED_I_ARG '/from pytest import/d' "$file"
     
     # Remove MagicMock references
-    sed -i '/MagicMock/d' "$file"
+    sed $SED_I_ARG '/MagicMock/d' "$file"
     
     # Remove patch decorators
-    sed -i '/@patch/d' "$file"
-    sed -i '/@mock/d' "$file"
+    sed $SED_I_ARG '/@patch/d' "$file"
+    sed $SED_I_ARG '/@mock/d' "$file"
     
     # Remove any lines with explicit mock references
-    sed -i '/mock_/d' "$file"
+    sed $SED_I_ARG '/mock_/d' "$file"
 done
 
 # Create production environment file
